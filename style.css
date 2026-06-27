@@ -1632,6 +1632,26 @@ display:none;
 
 }
 
+.gold-link {
+    color: #D4AF37;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.gold-link:hover {
+    color: #F4D76A;
+    text-decoration: underline;
+}
+
+.gold-link:visited {
+    color: #D4AF37;
+}
+
+.gold-link:active {
+    color: #C9A227;
+}
+
 /* ==========================================
    END
 ========================================== */
