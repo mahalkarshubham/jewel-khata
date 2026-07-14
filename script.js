@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const header = document.querySelector("header");
     const nav = document.querySelector("nav");
     const navLinks = document.querySelectorAll("nav a");
-    const faqItems = document.querySelectorAll(".faq-item");
+const faqItems = document.querySelectorAll(".faq-item");
 
     /* ==========================================
        MOBILE MENU
@@ -177,38 +177,39 @@ document.addEventListener("DOMContentLoaded", () => {
        FAQ ACCORDION
     ========================================== */
 
-    faqItems.forEach(item => {
+    
+faqItems.forEach(item => {
 
-        const title =
-            item.querySelector("h3");
+    const question = item.querySelector("h3");
+    const answer = item.querySelector(".faq-answer, p");
 
-        title.addEventListener("click", () => {
+    if (!answer) return;
 
-            faqItems.forEach(faq => {
+    answer.style.maxHeight = "0px";
+    answer.style.overflow = "hidden";
 
-                if (faq !== item) {
+    question.addEventListener("click", () => {
 
-                    faq.classList.remove("active");
+        const isOpen = item.classList.contains("active");
 
-                }
+        faqItems.forEach(faq => {
+            faq.classList.remove("active");
 
-            });
-
-            item.classList.toggle("active");
-
+            const ans = faq.querySelector(".faq-answer, p");
+            if (ans) ans.style.maxHeight = "0px";
         });
 
+        if (!isOpen) {
+            item.classList.add("active");
+            answer.style.maxHeight = answer.scrollHeight + "px";
+        }
+
     });
-    
+
+});    
     /* ==========================================
    MOBILE NAVIGATION
 ========================================== */
-
-@media (max-width: 900px) {
-
-
-
-}
 
 /* ==========================================
    PART 3.2.1
@@ -702,43 +703,6 @@ img.style.transform="scale(1)";
 
 });
 
-document.querySelectorAll(".faq-item").forEach(item => {
-
-    const question = item.querySelector("h3");
-    const answer = item.querySelector("p");
-
-    answer.style.maxHeight = "0px";
-
-    question.addEventListener("click", () => {
-
-        document.querySelectorAll(".faq-item").forEach(other => {
-
-            if (other !== item) {
-
-                other.classList.remove("active");
-
-                const otherAnswer = other.querySelector("p");
-                otherAnswer.style.maxHeight = "0px";
-
-            }
-
-        });
-
-        item.classList.toggle("active");
-
-        if (item.classList.contains("active")) {
-
-            answer.style.maxHeight = answer.scrollHeight + "px";
-
-        } else {
-
-            answer.style.maxHeight = "0px";
-
-        }
-
-    });
-
-});
 
 
 /* ==========================================
